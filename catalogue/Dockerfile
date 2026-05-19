@@ -1,16 +1,16 @@
-FROM node:14
+FROM node:14-alpine
 
-ENV INSTANA_AUTO_PROFILE true
+# ENV INSTANA_AUTO_PROFILE true
 
 EXPOSE 8080
 
-WORKDIR /opt/server
+WORKDIR /app
 
-COPY package.json /opt/server/
+COPY package.json /app
 
 RUN npm install
 
-COPY server.js /opt/server/
+COPY server.js /app
 
 CMD ["node", "server.js"]
 

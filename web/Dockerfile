@@ -1,3 +1,7 @@
+
+# simple HTML/CSS/JS site, you usually serve it from a lightweight web server like Nginx. 
+
+# this stage 1 is just for using the alpine image to download the instana sensor and then we will copy it to the nginx image in the next stage we are jsut downloading the sensor just beacuse the nginx image is very minimal and it does not have the tools to download the sensor and also it does not have the unzip tool to unzip the downloaded file so we are using the alpine image to download the sensor and then we will copy it to the nginx image in the next stage
 FROM alpine AS build
 ARG KEY
 
