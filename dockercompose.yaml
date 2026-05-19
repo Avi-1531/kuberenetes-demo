@@ -4,7 +4,7 @@ services:
   mongodb:
     build:
       context: mongo
-    image: robot-shop/rs-mongodb:${TAG}
+    image: avi1531/rs-mongodb:${TAG}
 
   redis:
     image: redis:6.2-alpine
@@ -15,19 +15,19 @@ services:
   mysql:
     build:
       context: mysql
-    image: robot-shop/rs-mysql-db:${TAG}
+    image: avi1531/rs-mysql-db:${TAG}
 
   catalogue:
     build:
       context: catalogue
-    image: robot-shop/rs-catalogue:${TAG}
+    image: avi1531/rs-catalogue:${TAG}
     depends_on:
       - mongodb
 
   user:
     build:
       context: user
-    image: robot-shop/rs-user:${TAG}
+    image: avi1531/rs-user:${TAG}
     depends_on:
       - mongodb
       - redis
@@ -35,35 +35,35 @@ services:
   cart:
     build:
       context: cart
-    image: robot-shop/rs-cart:${TAG}
+    image: avi1531/rs-cart:${TAG}
     depends_on:
       - redis
 
   shipping:
     build:
       context: shipping
-    image: robot-shop/rs-shipping:${TAG}
+    image: avi1531/rs-shipping:${TAG}
     depends_on:
       - mysql
 
   ratings:
     build:
       context: ratings
-    image: robot-shop/rs-ratings:${TAG}
+    image: avi1531/rs-ratings:${TAG}
     depends_on:
       - mysql
 
   payment:
     build:
       context: payment
-    image: robot-shop/rs-payment:${TAG}
+    image: avi1531/rs-payment:${TAG}
     depends_on:
       - rabbitmq
 
   dispatch:
     build:
       context: dispatch
-    image: robot-shop/rs-dispatch:${TAG}
+    image: avi1531/rs-dispatch:${TAG}
     depends_on:
       - rabbitmq
 
@@ -73,7 +73,7 @@ services:
       # If you don’t want Instana, you can drop args: / KEY completely
       # args:
       #   KEY: ${INSTANA_AGENT_KEY}
-    image: robot-shop/rs-web:${TAG}
+    image: avi1531/rs-web:${TAG}
     depends_on:
       - catalogue
       - user
