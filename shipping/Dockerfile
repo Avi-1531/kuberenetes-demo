@@ -2,8 +2,12 @@
 # Build
 #
 FROM debian:bullseye AS build
+# Maven is a build and project management tool for Java.
+# It uses the Java compiler (javac) and handles the full build lifecycle.
 
-RUN apt-get update && apt-get -y install maven
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends maven \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/shipping
 
